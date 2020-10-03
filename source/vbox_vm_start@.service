@@ -1,0 +1,21 @@
+Unit]
+Description=VirtualBox VM %I
+After=network.target vboxdrv.service
+Before=runlevel2.target shutdown.target
+
+[Service]
+User=pragmalin
+Group=vboxusers
+Type=forking
+Restart=no
+TimeoutSec=5min
+IgnoreSIGPIPE=no
+KillMode=process
+GuessMainPID=no
+RemainAfterExit=yes
+
+ExecStart=/usr/bin/VBoxManage startvm vm_name --type headless
+ExecStop=/usr/bin/VBoxManage controlvm vm_name acpipowerbutton
+
+[Install]
+WantedBy=multi-user.target
