@@ -1,4 +1,4 @@
-Unit]
+[Unit]
 Description=VirtualBox VM %I
 After=network.target vboxdrv.service
 Before=runlevel2.target shutdown.target
